@@ -156,7 +156,7 @@ if(HAVE_CONPTY)
   add_executable(pterm
     window.c
     pterm.c
-    help.c
+    help.c 
     conpty.c
     ${CMAKE_SOURCE_DIR}/stubs/no-gss.c
     ${CMAKE_SOURCE_DIR}/stubs/no-ca-config.c

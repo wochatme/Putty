@@ -1,0 +1,16 @@
+
+cl /c /MD d:\mywork\Putty\windows\window.c /Id:\mywork\putty /Id:\mywork\putty\terminal /DHAVE_GCP_RESULTSW
+cl /c /MD d:\mywork\Putty\windows\pterm.c /Id:\mywork\putty /Id:\mywork\putty\terminal
+cl /c /MD d:\mywork\Putty\windows\help.c /Id:\mywork\putty /Id:\mywork\putty\terminal
+cl /c /MD d:\mywork\Putty\windows\conpty.c /Id:\mywork\putty /Id:\mywork\putty\terminal
+cl /c /MD d:\mywork\Putty\stubs\no-gss.c /Id:\mywork\putty /Id:\mywork\putty\windows
+cl /c /MD d:\mywork\Putty\stubs\no-ca-config.c /Id:\mywork\putty /Id:\mywork\putty\windows
+cl /c /MD d:\mywork\Putty\stubs\no-rand.c /Id:\mywork\putty /Id:\mywork\putty\windows
+cl /c /MD d:\mywork\Putty\proxy\nosshproxy.c /Id:\mywork\putty /Id:\mywork\putty\windows
+cl /c /MD d:\mywork\Putty\be_list.c /Id:\mywork\putty /Id:\mywork\putty\windows
+
+
+set INCLUDE=%INCLUDE%;D:\mywork\Putty;D:\mywork\Putty\windows
+rc /d HAVE_WINRES_H d:\mywork\putty\windows\pterm.rc
+
+link /OUT:pterm.exe window.obj be_list.obj conpty.obj help.obj no-ca-config.obj no-gss.obj no-rand.obj nosshproxy.obj pterm.obj pterm.res guiterminal.lib guimisc.lib eventloop.lib network.lib settings.lib utils.lib advapi32.lib comdlg32.lib gdi32.lib imm32.lib ole32.lib shell32.lib user32.lib ws2_32.lib kernel32.lib
