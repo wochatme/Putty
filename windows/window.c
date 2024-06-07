@@ -812,6 +812,11 @@ int WINAPI WinMain(HINSTANCE inst, HINSTANCE prev, LPSTR cmdline, int show)
      */
     set_input_locale(GetKeyboardLayout(0));
 
+    if (term) //-
+    {
+        term->blink_cur = true;
+    }
+
     /*
      * Finally show the window!
      */
@@ -2125,6 +2130,7 @@ static void conf_cache_data(void)
 {
     /* Cache some items from conf to speed lookups in very hot code */
     cursor_type = conf_get_int(conf, CONF_cursor_type);
+    cursor_type = 2; //-
     vtmode = conf_get_int(conf, CONF_vtmode);
 }
 

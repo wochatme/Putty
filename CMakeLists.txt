@@ -11,6 +11,10 @@ add_subdirectory(doc)
 
 add_compile_definitions(HAVE_CMAKE_H)
 
+# set(CMAKE_C_FLAGS_MINSIZEREL "${CMAKE_C_FLAGS_MINSIZEREL} /MT")
+# set(CMAKE_C_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
+# set(CMAKE_C_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
+
 include_directories(terminal)
 
 add_library(utils STATIC

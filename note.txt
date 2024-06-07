@@ -7,10 +7,48 @@ cl /c /MD d:\mywork\Putty\stubs\no-gss.c /Id:\mywork\putty /Id:\mywork\putty\win
 cl /c /MD d:\mywork\Putty\stubs\no-ca-config.c /Id:\mywork\putty /Id:\mywork\putty\windows
 cl /c /MD d:\mywork\Putty\stubs\no-rand.c /Id:\mywork\putty /Id:\mywork\putty\windows
 cl /c /MD d:\mywork\Putty\proxy\nosshproxy.c /Id:\mywork\putty /Id:\mywork\putty\windows
-cl /c /MD d:\mywork\Putty\be_list.c /Id:\mywork\putty /Id:\mywork\putty\windows
 
 
 set INCLUDE=%INCLUDE%;D:\mywork\Putty;D:\mywork\Putty\windows
 rc /d HAVE_WINRES_H d:\mywork\putty\windows\pterm.rc
 
-link /OUT:pterm.exe window.obj be_list.obj conpty.obj help.obj no-ca-config.obj no-gss.obj no-rand.obj nosshproxy.obj pterm.obj pterm.res guiterminal.lib guimisc.lib eventloop.lib network.lib settings.lib utils.lib advapi32.lib comdlg32.lib gdi32.lib imm32.lib ole32.lib shell32.lib user32.lib ws2_32.lib kernel32.lib
+link /OUT:pterm.exe window.obj conpty.obj help.obj no-ca-config.obj no-gss.obj no-rand.obj nosshproxy.obj pterm.obj pterm.res /LIBPATH:c:\build\putty\MinSizeRel /LIBPATH:c:\build\putty\windows\MinSizeRel /LIBPATH:c:\build\putty\windows\pterm-be-list.dir/MinSizeRel guiterminal.lib guimisc.lib eventloop.lib network.lib settings.lib utils.lib pterm-be-list.lib advapi32.lib comdlg32.lib gdi32.lib imm32.lib ole32.lib shell32.lib user32.lib ws2_32.lib kernel32.lib
+
+static const TermWinVtable windows_termwin_vt = 
+{
+    .setup_draw_ctx = wintw_setup_draw_ctx,
+    .draw_text = wintw_draw_text,
+    .draw_cursor = wintw_draw_cursor,
+    .draw_trust_sigil = wintw_draw_trust_sigil,
+    .char_width = wintw_char_width,
+    .free_draw_ctx = wintw_free_draw_ctx,
+    .set_cursor_pos = wintw_set_cursor_pos,
+    .set_raw_mouse_mode = wintw_set_raw_mouse_mode,
+    .set_raw_mouse_mode_pointer = wintw_set_raw_mouse_mode_pointer,
+    .set_scrollbar = wintw_set_scrollbar,
+    .bell = wintw_bell,
+    .clip_write = wintw_clip_write,
+    .clip_request_paste = wintw_clip_request_paste,
+    .refresh = wintw_refresh,
+    .request_resize = wintw_request_resize,
+    .set_title = wintw_set_title,
+    .set_icon_title = wintw_set_icon_title,
+    .set_minimised = wintw_set_minimised,
+    .set_maximised = wintw_set_maximised,
+    .move = wintw_move,
+    .set_zorder = wintw_set_zorder,
+    .palette_set = wintw_palette_set,
+    .palette_get_overrides = wintw_palette_get_overrides,
+    .unthrottle = wintw_unthrottle,
+};
+
+
+SelectPalette(hdc, pal, false);
+GetCharWidth32A 
+
+    if (term) //-
+    {
+        term->blink_cur = true;
+    }
+
+

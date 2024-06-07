@@ -2043,7 +2043,10 @@ Terminal *term_init(Conf *myconf, struct unicode_data *ucsdata, TermWin *win)
     term->termstate = TOPLEVEL;
     term->selstate = NO_SELECTION;
     term->curstype = 0;
-
+#if 0
+    term->curstype = 2; //-
+    term->blink_cur = false; //-
+#endif
     term_copy_stuff_from_conf(term);
 
     term->screen = term->alt_screen = term->scrollback = NULL;
