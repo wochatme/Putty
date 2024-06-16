@@ -1,0 +1,24 @@
+#include <windows.h>
+#include "rcstuff.h"
+#include "putty-rc.h"
+
+#define APPNAME "pterm"
+#define APPDESC "PuTTY-style wrapper for Windows command prompts"
+
+//IDI_MAINICON ICON "pterm.ico"
+//IDI_CFGICON ICON "ptermcfg.ico"
+
+//#include "help.rc2"
+//#include "putty-common.rc2"
+
+IDD_MAINBOX DIALOG DISCARDABLE 0, 0, 300, 252
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "PuTTY Configuration"
+FONT 8, "MS Shell Dlg"
+CLASS "PuTTYConfigBox"
+BEGIN
+END
+
+#ifndef NO_MANIFESTS
+//1 RT_MANIFEST "putty.mft"
+#endif /* NO_MANIFESTS */

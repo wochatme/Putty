@@ -83,6 +83,7 @@ static void EnsureNativeArchitecture()
     }
 }
 
+///- The main entry of WT
 int __stdcall wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int nCmdShow)
 {
     TraceLoggingRegister(g_hWindowsTerminalProvider);
@@ -115,5 +116,5 @@ int __stdcall wWinMain(HINSTANCE, HINSTANCE, LPWSTR, int nCmdShow)
     winrt::init_apartment(winrt::apartment_type::single_threaded);
 
     const auto emperor = std::make_shared<::WindowEmperor>();
-    emperor->HandleCommandlineArgs(nCmdShow);
+    emperor->HandleCommandlineArgs(nCmdShow); ///- main logic
 }

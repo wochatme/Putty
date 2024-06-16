@@ -11,7 +11,7 @@ class BaseWindow
 {
 public:
     virtual ~BaseWindow() = 0;
-    static T* GetThisFromHandle(HWND const window) noexcept
+    static T* GetThisFromHandle(HWND const window) noexcept ///- use GetWindowLongPtr to get the object pointer
     {
         return reinterpret_cast<T*>(GetWindowLongPtr(window, GWLP_USERDATA));
     }

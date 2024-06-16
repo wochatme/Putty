@@ -39,7 +39,7 @@ void NonClientIslandWindow::Close()
     IslandWindow::Close();
 }
 
-static constexpr const wchar_t* dragBarClassName{ L"DRAG_BAR_WINDOW_CLASS" };
+static constexpr const wchar_t* dragBarClassName{ L"DRAG_BAR_WINDOW_CLASS" }; //- The small window on the top right
 
 [[nodiscard]] LRESULT __stdcall NonClientIslandWindow::_StaticInputSinkWndProc(HWND const window, UINT const message, WPARAM const wparam, LPARAM const lparam) noexcept
 {
@@ -102,7 +102,7 @@ void NonClientIslandWindow::MakeWindow() noexcept
     THROW_HR_IF_NULL(E_UNEXPECTED, _dragBarWindow);
 }
 
-LRESULT NonClientIslandWindow::_dragBarNcHitTest(const til::point pointer)
+LRESULT NonClientIslandWindow::_dragBarNcHitTest(const til::point pointer) //- check if the mouse click some button
 {
     auto rcParent = GetWindowRect();
     // The size of the buttons doesn't change over the life of the application.
